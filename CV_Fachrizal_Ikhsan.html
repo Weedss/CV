@@ -71,7 +71,7 @@
         h1 {
             font-size: clamp(3rem, 8vw, 4rem);
             font-weight: bold;
-            color: navy;
+            color: #ffd700;
             margin-bottom: 2rem;
             line-height: 3.4rem;
         }
@@ -81,12 +81,13 @@
         }
 
         .section-title {
-            background-color: gold;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            font-weight: bold;
-            margin-bottom: 1rem;
+             background-color: gold;
+             padding: 0.5rem 1rem;
+             border-radius: 20px;
+             display: inline-block;
+             font-weight: bold;
+             margin-bottom: 1rem;
+             color: rgb(0, 0, 0); /* Make text white in light mode */
         }
 
         .content-section {
@@ -159,7 +160,7 @@
 
         .experience-date {
             font-weight: bold;
-            color: #000080;
+            color: #000000;
             margin-bottom: 0.5rem;
         }
 
@@ -253,7 +254,7 @@
             --card-hover: #f0f0f0;
             --heading-color: navy;
             --accent-color: #ffd700;
-            --date-color: #000080;
+            --date-color: #ffd700;
         }
 
         /* Tema gelap */
@@ -263,7 +264,7 @@
             --text-color: #ffffff;
             --card-bg: #3d3d3d;
             --card-hover: #4d4d4d;
-            --heading-color: #144063;
+            --heading-color: #0057ff;
             --accent-color: #d36a53;
             --date-color: #144063;
             
@@ -382,142 +383,167 @@
         }
 
         .portfolio-link {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+             text-align: center;
+             margin-bottom: 2rem;
+        }
 
-.behance-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #0057ff, #003cbd);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 87, 255, 0.2);
-}
+        .behance-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: #ffd900; /* Default background color for light mode */
+            color: #000000; /* Default text color for light mode */
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .behance-button:hover {
+            transform: translateY(-2px);
+            background: #ffd700; /* Lighter background on hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .behance-button i {
+            font-size: 1.2em;
+            color: #000000; /* Default icon color for light mode */
+        }
 
-.behance-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 87, 255, 0.3);
-}
+        /* Dark mode adjustments */
+        [data-theme="dark"] .behance-button {
+            background: var(--accent-color); /* Use the same background color as the Send Message button */
+            color: white; /* Text color for dark mode */
+        }
+        
+        [data-theme="dark"] .behance-button:hover {
+            box-shadow: 0 6px 20px rgba(0, 87, 255, 0.3); /* Adjust hover effect for dark mode */
+        }
 
-.behance-button i {
-    font-size: 1.2em;
-}
+        [data-theme="dark"] .behance-button i {
+            color: white; /* Icon color for dark mode */
+        }
 
-/* Contact Form Styles */
-.contact-form {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
+        /* Dark mode styles remain unchanged */
+        [data-theme="dark"] .behance-button {
+            background: #d36a53;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        [data-theme="dark"] .behance-button:hover {
+            background: #d36a53; /* Change hover background color to #d36a53 */
+            box-shadow: 0 6px 20px rgba(211, 106, 83, 0.3); /* Adjust hover effect for dark mode */
+        }
+        
+        [data-theme="dark"] .behance-button i {
+            color: white;
+        }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
+        /* Contact Form Styles */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
+        .form-grid {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           gap: 1.5rem;
+           margin-top: 1.5rem;
+        }
 
-.form-group.full-width {
-    grid-column: 1 / -1;
-}
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .contact-form label {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: var(--container-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(211, 106, 83, 0.1);
+        }
+        
+        .submit-btn {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--accent-color);
+            color: #000000; /* Default text color for light mode */
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn i {
+            color: #000000; /* Default icon color for light mode */
+        }
+        
+        /* Dark mode adjustments */
+        [data-theme="dark"] .submit-btn {
+            color: white; /* Text color for dark mode */
+        }
+        [data-theme="dark"] .submit-btn i {
+            color: white; /* Icon color for dark mode */
+        }
+        
+        /* Dark mode adjustments */
+        [data-theme="dark"] .contact-form {
+            background: var(--card-bg);
+        }
 
-.contact-form label {
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 12px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    background: var(--container-bg);
-    color: var(--text-color);
-    transition: all 0.3s ease;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--accent-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(211, 106, 83, 0.1);
-}
-
-.submit-btn {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background: var(--accent-color);
-    color: var(--container-bg);
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(211, 106, 83, 0.3);
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] .contact-form {
-    background: var(--card-bg);
-}
-
-[data-theme="dark"] .contact-form input,
-[data-theme="dark"] .contact-form textarea {
-    background: var(--container-bg);
-    color: var(--text-color);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form {
-        padding: 1.5rem;
-    }
-}
-
-/* Success Message Popup */
-.popup {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem 2rem;
-    background: #4CAF50;
-    color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transform: translateX(150%);
-    transition: transform 0.3s ease;
-    z-index: 1000;
-}
-
-.popup.show {
-    transform: translateX(0);
-}
+        [data-theme="dark"] .section-title {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        [data-theme="dark"] .contact-form input,
+        [data-theme="dark"] .contact-form textarea {
+            background: var(--container-bg);
+            color: var(--text-color);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -539,16 +565,8 @@
             <div class="title-section">
                 <h1>GRAPHIC<br><span>DESIGNER</span></h1>
                 <div class="section-title">About Me!!</div>
-                <p>Nama saya Fachrizal Ikhsan. Saat ini, saya berumur 20 tahun.
-                    Saya bekerja sebagai desainer grafis di PT Tracon Industri, sebuah perusahaan yang bergerak 
-                    di bidang teknik dan konstruksi. Selain itu, saya juga tengah menempuh pendidikan di semester lima 
-                    jurusan Teknik Informatika di Universitas Indraprasta PGRI. Meski menjalani dua peran sekaligus tidaklah mudah, bagi saya ini adalah 
-                    kesempatan berharga untuk terus belajar, bertumbuh, dan mengembangkan diri.  
-                    Sebagai desainer grafis, pekerjaan saya melibatkan kreativitas dan ketelitian. Setiap harinya, saya 
-                    merancang berbagai materi visual untuk mendukung kebutuhan perusahaan, mulai dari desain 
-                    presentasi hingga kampanye pemasaran. Saya sangat menikmati pekerjaan ini karena selain 
-                    menantang, bidang desain grafis memungkinkan saya untuk menuangkan ide-ide kreatif yang dapat 
-                    memberikan nilai tambah bagi perusahaan.</p>
+                <p>My name is Fachrizal Ikhsan, and I'm 20 years old. I used to work as a graphic designer at PT Tracon Industri, a company in the engineering and construction field. Right now, I'm also a fifth-semester student majoring in Computer Science at Universitas Indraprasta PGRI. Balancing these two roles isn’t easy, but I see it as a great opportunity to keep learning, growing, and improving myself.
+                    As a graphic designer, my job was all about creativity and attention to detail. Every day, I created various visual materials to support the company’s needs, from presentation designs to marketing campaigns. I really enjoyed the work because it was both challenging and a way for me to express creative ideas that added value to the company.</p>
             </div>
         </div>
 
@@ -648,16 +666,16 @@
         <div class="content-section">
             <div class="section-title">Experience</div>
             <div class="experience-item">
-                <p class="experience-date">Maret 2024 - Now</p>
-                <p>Magang di PT Tracon Industri</p>
-                <p>Anggota, Divisi konten</p>
-                <p>Bertanggung jawab membuat desain di beberapa konten-konten yang ada seperti poster, feeds, story untuk beberapa konten bisa dilihat di instagram @pt_tracon_industri_official</p>
+                <p class="experience-date">March 2024 - Now</p>
+                <p>Interned at PT Tracon Industri.</p>
+                <p>Intern, CSS Graphic Design Division.</p>
+                <p>Responsible for creating designs for various content, such as posters, feeds, and stories. Some of the work can be seen on Instagram @pt_tracon_industri_official</p>
             </div>
             <div class="experience-item">
-                <p class="experience-date">Juli 2021 - Agustus 2021</p>
-                <p>PKL di PT Sinergi Mega Konsultan</p>
-                <p>Anggota, Divisi konten</p>
-                <p>Bertanggung jawab membuat desain pada beberapa konten-konten yang di butuhkan untuk beberapa request klien</p>
+                <p class="experience-date">July 2021 - August 2021</p>
+                <p>Completed an internship at PT Sinergi Mega Konsultan.</p>
+                <p>Member of the Content Division.</p>
+                <p>Responsible for designing various content as needed based on client requests.</p>
             </div>
             <div class="content-section">
                 <div class="portfolio-link">
@@ -667,7 +685,7 @@
                     </a>
                 </div>
             
-                <form action="#" method="POST" onsubmit="showPopup(event)" class="contact-form">
+                <form action="https://formspree.io/f/xanwnpzk" method="POST" class="contact-form">
                     <div class="section-title">Contact Me</div>
                     <div class="form-grid">
                         <div class="form-group">
@@ -697,6 +715,12 @@
 
 
     <script>
+    window.onbeforeunload = () => {
+        for (const form of document.getElementsByTagName("form")) {
+            form.reset();
+        }
+    };
+
         // Check for saved theme preference or default to 'light'
         const currentTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', currentTheme);
